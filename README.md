@@ -8,3 +8,23 @@ Provisioning user accounts on a Microsoft Server using Active Directory and Powe
 Provisioning user accounts on a Linux Server using Terminal and GUI.
 
 Implementing principles of Least Privilege and secure account management.
+
+Key Concepts Learned
+User and group provisioning in Windows Server and Linux.
+
+Managing permissions and following Least Privilege principle.
+
+Scripting user management with PowerShell.
+
+Using GUI and Terminal approaches to Linux user management.
+
+Skills Developed
+Active Directory Management
+
+PowerShell Scripting
+
+Linux System Administration
+
+IAM Best Practices
+
+Privilege Management
