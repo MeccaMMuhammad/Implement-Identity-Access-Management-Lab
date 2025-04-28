@@ -1,0 +1,159 @@
+Exercises Completed
+
+Exercise 1: Provisioning User Accounts on a Microsoft Server
+
+Devices Used
+ACIDC01 - Windows Server 2022 (Domain Controller)
+
+ACIDM01 - Windows Server 2022 (Domain Member Server)
+
+Task 1: Create a Domain User Account Using Active Directory Users and Computers
+Steps:
+
+Connect to ACIDC01.
+
+Open Server Manager → Tools → Active Directory Users and Computers.
+
+Create a new Organizational Unit:
+
+Right-click domain > New > Organizational Unit.
+
+Name: System Administrators
+
+Create a new Group:
+
+Right-click System Administrators OU > New > Group.
+
+Name: System Administrators
+
+Create a new User:
+
+Right-click System Administrators > New > User.
+
+First Name: Subi
+
+Last Name: ACI
+
+Username: subiaci
+
+Password: Passw0rd
+
+Add the user to groups:
+
+Add user Subi ACI to the System Administrators group.
+
+Also add System Administrators group to the Administrators group.
+
+Note: Password complexity enforcement prompts user to reset on first login.
+
+Task 2: Create a User Using Windows PowerShell
+
+Commands Used:
+powershell
+# Create user Louis ACI
+
+New-ADUser -Name "Louis ACI" -GivenName "Louis" -Surname "ACI" -SamAccountName "louisaci" -UserPrincipalName "louisaci@aciplab.com" -Path "OU=System Administrators,DC=aciplab,DC=com" -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
+
+When prompted, input password: Passw0rd
+
+powershell
+
+# Add Louis ACI to System Administrators group
+
+Add-ADGroupMember -Identity "System Administrators" -Members louisaci
+
+Verification:
+
+Checked Active Directory Users and Computers.
+
+Verified Louis ACI was a member of System Administrators OU and Security Group.
+
+Exercise 2: Provisioning User Accounts on a Linux Server
+
+Devices Used
+ACIALMA - AlmaLinux 9.1 (Stand-alone Linux Server)
+
+Task 1: Create a User Account on a Linux Server using Terminal
+Commands Used:
+
+
+# Create a new user
+sudo useradd louisaci
+When prompted, input password: Passw0rd
+
+
+# Set password for the new user
+sudo passwd louisaci
+# Input: Passw0rd
+
+# Add user to 'wheel' group (grants sudo privileges)
+sudo usermod -aG wheel louisaci
+
+# Switch to the new user
+su louisaci
+# Enter password: Passw0rd
+
+# Confirm active user
+whoami
+
+# Perform a system upgrade with elevated privileges
+sudo dnf upgrade -y
+# Enter password: Passw0rd
+
+Task 2: Create a User Account on a Linux Server Using GUI
+Steps:
+
+Connect to ACIALMA.
+
+Open Activities → Search for Users.
+
+Click Unlock and authenticate with Passw0rd.
+
+Click Add User.
+
+Fill:
+
+Full Name: Subi ACI
+
+Account Type: Administrator
+
+Set password manually: Pr@ctice
+
+Open Terminal and switch user:
+
+
+su subiaci
+# Password: Pr@ctice
+Verification:
+
+Successful login as subiaci.
+
+Confirmed administrative privileges.
+
+Key Concepts Learned
+
+User and group provisioning in Windows Server and Linux.
+
+Managing permissions and following Least Privilege principle.
+
+Scripting user management with PowerShell.
+
+Using GUI and Terminal approaches to Linux user management.
+
+Final Thoughts
+This lab helped me strengthen practical skills that are critical for a Systems Administrator role, especially around Identity and Access Management (IAM).
+It also enhanced my efficiency by learning automation techniques using PowerShell and Linux terminal commands.
+
+Skills Developed
+
+Active Directory Management
+
+PowerShell Scripting
+
+Linux System Administration
+
+IAM Best Practices
+
+Privilege Management
+
+🚀 Onwards to more hands-on learning!
